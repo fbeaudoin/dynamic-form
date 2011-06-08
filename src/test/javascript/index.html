@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]><html lang="en" class="ie7"> </html><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie8"> </html><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"> </html><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<title>OVEA LABS - Formulaires</title>
+<meta name="author" content="David Avenante" />
+<link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/uniform.default.css" media="screen" />
+<script type="text/javascript" src="./js/jquery/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="./js/jquery.easing-1.3.js"></script>
+<script type="text/javascript" src="./js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="./js/cufon-yui.js"></script>
+<script type="text/javascript" src="./fonts/PTSansNarrow_400.js"></script>
+<script type="text/javascript" src="./js/custom.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="./js/html5.js"></script>
+<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<!--[if lte IE 6]>
+<div id="ie6-message"><p>Vous utilisez Internet Explorer 6.0... un navigateur qui est sorti il y a bientôt dix ans<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Mettez votre version à jour</a></p></div>
+<![endif]-->
+<section class="section">
+    <div class="section-line"></div>
+    <div class="section-header">
+        <h2>Formulaire</h2>
+    </div>
+    <!-- section content -->
+    <div class="content clearfix">
+        <!-- one_third -->
+        <div class="col col-1-3">
+            <!-- item list -->
+            <div class="item-list">
+                <div class="item-list-top"></div>
+                <div class="dynamic-container">
+                    <ul>
+                        <li>
+                            <p><span class="date">Formulaire classique 1</span> Input text, textarea et submit button</p>
+                        </li>
+                        <li>
+                            <p><span class="date">Formulaire classique 2</span> Input text, textarea et submit button</p>
+                        </li>
+                        <li>
+                            <p><span class="date">Formulaire classique 3</span> Input text, textarea et submit button</p>
+                        </li>
+                        <li>
+                            <p><span class="date">Coming soon</span> Sed lacinia ante eu est...</p>
+                        </li>
+                        <li>
+                            <p><span class="date">Coming soon</span> Tempus a fermentum et...</p>
+                        </li>
+                        <li>
+                            <p><span class="date">Coming soon</span> Pellentesque et neque...</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-list-footer"> <a href="#" class="nav-prev"></a> <a href="#" class="nav-next"></a> </div>
+            </div>
+            <!-- /news list -->
+        </div>
+        <!-- /one_third -->
+        <!-- two_third -->
+        <div class="col col-2-3 last">
+            <!-- panel wrapper -->
+            <div class="panel-wrapper">
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Formulaire Classique 1</h2>
+                    <form method="get" action="">
+                        <div class="row">
+                            <label for="email">Email: (Input Text)</label>
+                            <input type="email" class="email" name="email" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="password">Password: (Input Password)</label>
+                            <input type="password" class="password" name="password" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="comments">Comments: (Textarea)</label>
+                            <textarea class="uniform" name="comments" rows="10" cols="20"></textarea>
+                        </div>
+                        <div class="row">
+                            <label for="fruit">Favorite Fruit: (Select)</label>
+                            <select size="1" style="width:154px" name="fruit">
+                                <option value="apples">apples</option>
+                                <option value="bananas">bananas</option>
+                                <option selected="selected" value="pineapple">pineapple</option>
+                                <option value="papaya">papaya</option>
+                                <option value="strawberries">strawberries</option>
+                                <option value="blueberries">blueberries</option>
+                                <option value="raspberries">raspberries</option>
+                                <option value="plums">plums</option>
+                                <option value="peaches">peaches</option>
+                                <option value="pears">pears</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>Find: (Radios)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input name='rgroup' type='radio' value='radio1' />
+                                    search-engine </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    sourceforge </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    freshmeat </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    fantastico </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    stumbleupon </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    somebody </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    social </label>
+                                <label class="opt">
+                                    <input disabled='disabled' name='rgroup' type='radio' value='radio2' />
+                                    noanswer (diasabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<label>Area: (Checkbox)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input type='checkbox' value='check1' />
+                                    personal </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    none-profit </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    business </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    academic </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    government </label>
+                                <label class="opt">
+                                    <input disabled='disabled' type='checkbox' value='check3' />
+                                    other (disabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="languages">Languages: (Multiple Select)</label>
+                            <select size="6" name="languages[]" multiple="multiple">
+                                <option value="English">English</option>
+                                <option value="German">German</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Russian">Russian</option>
+                            </select>
+                        </div>
+                        <div class="controls"> <a class="btn" href="#">Short</a> <a class="btn" href="#">Very very long buton</a> <a class="btn" href="#">Medium buton</a> </div>
+                    </form>
+                    <!-- /contact form -->
+                </div>
+                <!-- /item panel -->
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Formulaire Classique 2</h2>
+                    <form method="get" action="">
+                        <div class="row">
+                            <label for="email">Email: (Input Text)</label>
+                            <input type="email" class="email" name="email" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="password">Password: (Input Password)</label>
+                            <input type="password" class="password" name="password" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="comments">Comments: (Textarea)</label>
+                            <textarea class="uniform" name="comments" rows="10" cols="20"></textarea>
+                        </div>
+                        <div class="row">
+                            <label for="fruit">Favorite Fruit: (Select)</label>
+                            <select size="1" style="width:154px" name="fruit">
+                                <option value="apples">apples</option>
+                                <option value="bananas">bananas</option>
+                                <option selected="selected" value="pineapple">pineapple</option>
+                                <option value="papaya">papaya</option>
+                                <option value="strawberries">strawberries</option>
+                                <option value="blueberries">blueberries</option>
+                                <option value="raspberries">raspberries</option>
+                                <option value="plums">plums</option>
+                                <option value="peaches">peaches</option>
+                                <option value="pears">pears</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>Find: (Radios)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input name='rgroup' type='radio' value='radio1' />
+                                    search-engine </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    sourceforge </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    freshmeat </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    fantastico </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    stumbleupon </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    somebody </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    social </label>
+                                <label class="opt">
+                                    <input disabled='disabled' name='rgroup' type='radio' value='radio2' />
+                                    noanswer (diasabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<label>Area: (Checkbox)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input type='checkbox' value='check1' />
+                                    personal </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    none-profit </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    business </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    academic </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    government </label>
+                                <label class="opt">
+                                    <input disabled='disabled' type='checkbox' value='check3' />
+                                    other (disabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="languages">Languages: (Multiple Select)</label>
+                            <select size="6" name="languages[]" multiple="multiple">
+                                <option value="English">English</option>
+                                <option value="German">German</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Russian">Russian</option>
+                            </select>
+                        </div>
+                        <div class="controls"> <a class="btn" href="#">Short</a> <a class="btn" href="#">Very very long buton</a> <a class="btn" href="#">Medium buton</a> </div>
+                    </form>
+                    <!-- /contact form -->
+                </div>
+                <!-- /item panel -->
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Formulaire Classique 3</h2>
+                    <form method="get" action="">
+                        <div class="row">
+                            <label for="email">Email: (Input Text)</label>
+                            <input type="email" class="email" name="email" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="password">Password: (Input Password)</label>
+                            <input type="password" class="password" name="password" maxlength="128" />
+                        </div>
+                        <div class="row">
+                            <label for="comments">Comments: (Textarea)</label>
+                            <textarea class="uniform" name="comments" rows="10" cols="20"></textarea>
+                        </div>
+                        <div class="row">
+                            <label for="fruit">Favorite Fruit: (Select)</label>
+                            <select size="1" style="width:154px" name="fruit">
+                                <option value="apples">apples</option>
+                                <option value="bananas">bananas</option>
+                                <option selected="selected" value="pineapple">pineapple</option>
+                                <option value="papaya">papaya</option>
+                                <option value="strawberries">strawberries</option>
+                                <option value="blueberries">blueberries</option>
+                                <option value="raspberries">raspberries</option>
+                                <option value="plums">plums</option>
+                                <option value="peaches">peaches</option>
+                                <option value="pears">pears</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label>Find: (Radios)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input name='rgroup' type='radio' value='radio1' />
+                                    search-engine </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    sourceforge </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    freshmeat </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    fantastico </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    stumbleupon </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    somebody </label>
+                                <label class="opt">
+                                    <input checked='checked' name='rgroup' type='radio' value='radio2' />
+                                    social </label>
+                                <label class="opt">
+                                    <input disabled='disabled' name='rgroup' type='radio' value='radio2' />
+                                    noanswer (diasabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<label>Area: (Checkbox)</label>
+                            <div class="wrapped">
+                                <label class="opt">
+                                    <input type='checkbox' value='check1' />
+                                    personal </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    none-profit </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    business </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    academic </label>
+                                <label class="opt">
+                                    <input checked='checked' type='checkbox' value='check2' />
+                                    government </label>
+                                <label class="opt">
+                                    <input disabled='disabled' type='checkbox' value='check3' />
+                                    other (disabled) </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="languages">Languages: (Multiple Select)</label>
+                            <select size="6" name="languages[]" multiple="multiple">
+                                <option value="English">English</option>
+                                <option value="German">German</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Russian">Russian</option>
+                            </select>
+                        </div>
+                        <div class="controls"> <a class="btn" href="#">Short</a> <a class="btn" href="#">Very very long buton</a> <a class="btn" href="#">Medium buton</a> </div>
+                    </form>
+                    <!-- /contact form -->
+                </div>
+                <!-- /item panel -->
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Sed lacinia ante eu est</h2>
+                    <p>Donec sed nibh urna. Vestibulum id velit eu purus ultricies dictum in in mauris. Maecenas convallis tempor euismod. Aenean dui nisi, vehicula feugiat pellentesque et, lobortis non dolor. Morbi non purus nec dui varius iaculis. Donec non erat quam, in facilisis massa. Sed lacinia ante eu est ultricies dictum. Integer justo nunc, tempus a fermentum et, molestie ac quam. Pellentesque et neque et ante consectetur varius id nec diam. Maecenas pretium, leo ut dapibus commodo, purus nulla interdum ipsum, sed mattis metus ante a nunc. </p>
+                </div>
+                <!-- /item panel -->
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Tempus a fermentum et</h2>
+                    <p>Donec sed nibh urna. Vestibulum id velit eu purus ultricies dictum in in mauris. Maecenas convallis tempor euismod. Aenean dui nisi, vehicula feugiat pellentesque et, lobortis non dolor. Morbi non purus nec dui varius iaculis. Donec non erat quam, in facilisis massa. Sed lacinia ante eu est ultricies dictum. Integer justo nunc, tempus a fermentum et, molestie ac quam. Pellentesque et neque et ante consectetur varius id nec diam. Maecenas pretium, leo ut dapibus commodo, purus nulla interdum ipsum, sed mattis metus ante a nunc. </p>
+                </div>
+                <!-- /item panel -->
+                <!-- item panel -->
+                <div class="item-panel text">
+                    <h2>Pellentesque et neque</h2>
+                    <p>Donec sed nibh urna. Vestibulum id velit eu purus ultricies dictum in in mauris. Maecenas convallis tempor euismod. Aenean dui nisi, vehicula feugiat pellentesque et, lobortis non dolor. Morbi non purus nec dui varius iaculis. Donec non erat quam, in facilisis massa. Sed lacinia ante eu est ultricies dictum. Integer justo nunc, tempus a fermentum et, molestie ac quam. Pellentesque et neque et ante consectetur varius id nec diam. Maecenas pretium, leo ut dapibus commodo, purus nulla interdum ipsum, sed mattis metus ante a nunc. </p>
+                </div>
+                <!-- /item panel -->
+            </div>
+            <!-- /panel wrapper -->
+        </div>
+        <!-- /two_third -->
+    </div>
+    </div>
+    <div class="section-line"></div>
+</section>
+<div class="clearfix"></div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

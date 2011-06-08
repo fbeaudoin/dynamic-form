@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ovea</groupId>
+        <artifactId>ovea</artifactId>
+        <version>2</version>
+    </parent>
+
+    <artifactId>dynamic-form</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>dynamic-form</name>
+    <description>JS form generator</description>
+
+    <scm>
+        <connection>scm:git:git@github.com:Ovea/${project.name}.git</connection>
+        <developerConnection>scm:git:git@github.com:Ovea/${project.name}.git</developerConnection>
+        <url>http://github.com/Ovea/${project.name}</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/.gitignore</exclude>
+                        <exclude>src/test/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+

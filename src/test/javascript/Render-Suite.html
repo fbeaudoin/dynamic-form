@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script type="text/javascript" src="../lib/jquery/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="../lib/jquery/jquery.fn.js"></script>
+    <script type="text/javascript" src="../lib/jquery/jquery.print.js"></script>
+    <script type="text/javascript" src="../lib/screw-unit/screw.builder.js"></script>
+    <script type="text/javascript" src="../lib/screw-unit/screw.matchers.js"></script>
+    <script type="text/javascript" src="../lib/screw-unit/screw.events.js"></script>
+    <script type="text/javascript" src="../lib/screw-unit/screw.behaviors.js"></script>
+
+    <script type="text/javascript" src="spec_helper.js"></script>
+
+    <script type="text/javascript" src="../lib/jshamcrest.js"></script>
+    <script type="text/javascript" src="../lib/jsmockito.js"></script>
+
+    <script type="text/javascript" src="../../main/resources/com/ovea/js/dynamic-form/dynamic-form.js"></script>
+
+    <script type="text/javascript" src="data/survey_1.js"></script>
+
+    <script type="text/javascript" src="specs/render_spec.js"></script>
+
+    <link rel="stylesheet" href="../lib/screw-unit/screw.css" type="text/css" charset="utf-8">
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            var dynForm = new DynamicForm(survey_1);
+            dynForm.render('form_container');
+        });
+
+    </script>
+
+</head>
+<body>
+<div id="dom_test" style="position:absolute;left:-9999"></div>
+
+<div id="form_container">
+
+</div>
+
+</body>
+</html>
