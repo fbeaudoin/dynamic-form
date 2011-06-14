@@ -1,87 +1,96 @@
 if (window.DynamicForm == undefined) {
     (function($) {
 
-        window.DynamicForm = function(form, options) {
-            var self = this;
-            this.form = form;
+        window.DynamicForm = function(options) {
+
             this.template = {};
             this.renderings = {};
             this.options = $.extend({
+                    specification: {},
+                    target: $('<div/>'),
                     choicesLength: 4
                 }, options || {});
 
             this.addTemplate('form', '<form class="df-form" id="{id}"></form>');
-            this.addTemplate('sections', '<div class="df-sec" id="{name}">');
-            this.addTemplate('questions', '<div class="df-qu" id="question_{name}"></div>');
-            this.addTemplate('group', '<fieldset class="df-group" id="{name}"><legend>{label}</legend></fieldset>');
-            this.addTemplate('label', '<p class="df-lbl">{label}</p>');
+            this.addTemplate('sections', '<div class="df-sec {name}"">');
+            this.addTemplate('elements', '<div class="df-el {name}"></div>');
+            this.addTemplate('group', '<fieldset class="df-group"><legend class="df-title">{name}</legend></fieldset>');
+            this.addTemplate('title', '<div class="df-title">{title}</div>');
 
-            this.addTemplate('radio', '<label class="df-radio">{value}</label><input class="df-radio" type="radio" name="{name}" value="{value}"/>');
-            this.addTemplate('checkbox', '<label class="df-cb">{value}</label><input class="df-cb" type="checkbox" name="{name}" value="{value}"/>');
-            this.addTemplate('open', '<label class="df-open">{name}</label><input class="df-open" type="text" name="{name}"/>');
-            this.addTemplate('select', '<select class="df-sel" name="{name}"></select>');
+            this.addTemplate('radio', '<label for="{name}_{index}" class="df-lbl df-radio">{value}</label><input id="{name}_{index}" class="df-radio" type="radio" name="{name}" value="{value}"/>');
+            this.addTemplate('checkbox', '<label for="{name}_{index}" class="df-lbl df-cb">{value}</label><input id="{name}_{index}" class="df-cb" type="checkbox" name="{name}" value="{value}"/>');
+            this.addTemplate('open', '<label for="{name}" class="df-lbl df-open">{name}</label><input id="{name}" class="df-open" type="text" name="{name}"/>');
+            this.addTemplate('select', '<label for="{name}" class="df-lbl df-sel">{name}</label><select id="{name}" class="df-sel" name="{name}"></select>');
             this.addTemplate('option', '<option class="df-opt" value="{value}">{value}</option>');
 
             this.addRendering('*', function (target, json, template) {
                 if (template) {
                     var html = template.merge(json);
                     target.append(html);
-                    return html;
+                    return {
+                        html: html
+                    };
                 }
             });
-            this.addRendering('questions', function (section, question, template) {
-                var html = template.merge(question);
-                if (question.type != 'group' && question.label && this.template['label']) {
-                    html.append(this.template['label'].merge(question));
+            this.addRendering('elements', function (section, element, template) {
+                var html = template.merge(element);
+                if (element.title !== undefined) {
+                    this.renderBody(html, element, 'title');
                 }
-                this.renderBody(html, question, question.type);
+                this.renderBody(html, element, element.type);
                 section.append(html);
+                return {
+                    html: html,
+                    stop: true
+                };
 
             });
-            this.addRendering('closed', function (body, question) {
-                this.renderBody(body, question,
-                    question.choices.length > this.options.choicesLength ?
+            this.addRendering('closed', function (body, element) {
+                this.renderBody(body, element,
+                    element.choices.length > this.options.choicesLength ?
                         'select' :
-                        (question.unique ? 'radio' : 'checkbox'));
+                        (element.unique ? 'radio' : 'checkbox'));
             });
-            this.addRendering('open', function (body, question, template) {
-                if (question.choices) {
-                    this.renderBody(body, question, 'closed');
+            this.addRendering('open', function (body, element, template) {
+                if (element.choices) {
+                    this.renderBody(body, element, 'closed');
                     body.append(template.merge({
-                            name: question.name + '_other'
+                            name: element.name + '_other'
                         }));
                 } else {
-                    body.append(template.merge(question));
+                    body.append(template.merge(element));
                 }
-                if (question.length) {
-                    body.find(':input').attr('maxlength', question.length);
+                if (element.length) {
+                    body.find(':input').attr('maxlength', element.length);
                 }
             });
-            this.addRendering(['checkbox', 'radio'], function (body, question, template) {
-                for (var c in question.choices) {
+            this.addRendering(['checkbox', 'radio'], function (body, element, template) {
+                for (var c in element.choices) {
                     body.append(template.merge({
-                            name: question.name,
-                            value: question.choices[c]
+                            name: element.name,
+                            value: element.choices[c],
+                            index: c
                         }));
                 }
-                for (var s in question.selected) {
-                    body.find('[value="' + question.selected[s] + '"]').attr('checked', 'checked');
+                for (var s in element.selected) {
+                    body.find('[value="' + element.selected[s] + '"]').attr('checked', 'checked');
                 }
             });
-            this.addRendering('select', function (body, question, template) {
-                body.append(template.merge(question));
+            this.addRendering('select', function (body, element, template) {
+                body.append(template.merge(element));
                 var select = body.find('select');
-                if (!question.unique) {
+                if (!element.unique) {
                     select.attr('multiple', 'true');
                 }
-                for (var c in question.choices) {
+                for (var c in element.choices) {
                     select.append(this.template['option'].merge({
-                            name: question.name,
-                            value: question.choices[c]
+                            name: element.name,
+                            value: element.choices[c],
+                            index: c
                         }));
                 }
-                for (var s in question.selected) {
-                    select.find('option[value="' + question.selected[s] + '"]').attr('selected', true);
+                for (var s in element.selected) {
+                    select.find('option[value="' + element.selected[s] + '"]').attr('selected', true);
                 }
             });
         };
@@ -89,52 +98,82 @@ if (window.DynamicForm == undefined) {
         DynamicForm.prototype = {
 
             id: function() {
-                return this.form.id;
+                return this.options.specification.id;
             },
-            sections: function() {
-                return this.form.sections;
+
+            toString: function() {
+                return 'DynamicForm[' + id() + ']';
             },
-            section: function(name) {
-                for (var section in this.form.sections) {
-                    if (section.name == name)
-                        return section;
-                }
-                return undefined;
-            },
-            questions: function() {
-                var questions = [];
-                for (var section in this.form.sections) {
-                    for (var question in section.questions) {
-                        questions.push(question);
+
+            toJSON: function() {
+                var json = {};
+                var els = this.options.target.find(':input:enabled:visible[name]');
+                $.each(els.serializeArray(), function() {
+                    if (json[this.name] !== undefined) {
+                        if (!json[this.name].push) {
+                            json[this.name] = [json[this.name]];
+                        }
+                        json[this.name].push(this.value || '');
+                    } else {
+                        json[this.name] = this.value || '';
+                    }
+                });
+                // force array for multiple selects
+                els.filter('select[multiple]').each(function() {
+                    if (json[this.name] !== undefined && !json[this.name].push) {
+                        json[this.name] = [json[this.name]];
+                    }
+                });
+                // force array for multiple checkboxes with same name
+                var counts = {};
+                els.filter(':checkbox').each(function() {
+                    counts[this.name] = (counts[this.name] || 0) + 1
+                });
+                for(var name in counts) {
+                    if (counts[name] > 1 && json[name] !== undefined && !json[name].push) {
+                        json[name] = [json[name]];
                     }
                 }
-                return questions;
+                return json;
             },
-            question: function(name) {
-                for (var question in this.questions()) {
-                    if (question.name == name)
-                        return question;
+
+            render: function() {
+                var html = $('<div class="df-container"/>');
+                this.renderBody(html, this.options.specification, 'form');
+                // ensure no duplicate ids are created
+                var ids = {};
+                var self = this;
+                var errs = [];
+                html.find("*[id]").each(function() {
+                    if (ids[this.id]) {
+                        errs.push('Duplicate element ID ' + this.id + ' found in form specification ' + self.id());
+                    } else {
+                        ids[this.id] = true;
+                    }
+                });
+                if (errs.length) {
+                    throw new Error(errs);
                 }
-                return undefined;
+                this.options.target.append(html);
             },
-            render: function(target) {
-                var dynaform = $('<div class="df-container"/>');
-                var html = this.renderBody(dynaform, this.form, 'form');
-                $('#' + target).append(dynaform);
-            },
-            renderBody: function(target, json, type) {
+
+            renderBody: function(target, json, type, nonRecursive) {
                 if ($.isArray(json)) {
                     for (var i in json) {
                         this.renderBody(target, json[i], type);
                     }
                 } else if (typeof json == 'object') {
                     var func = this.renderings[type] || this.renderings['*'];
-                    var content = func.call(this, target, json, this.template[type]);
-                    for (var containerId in json) {
-                        this.renderBody(content || target, json[containerId], containerId);
+                    //console.log('[renderBody]', arguments, func);
+                    var instr = func.call(this, target, json, this.template[type]) || {};
+                    if (!instr.stop) {
+                        for (var containerId in json) {
+                            this.renderBody(instr.html || target, json[containerId], containerId);
+                        }
                     }
                 }
             },
+
             addTemplate: function(name, template) {
                 this.template[name] = {
                     merge: function(data) {
@@ -148,13 +187,19 @@ if (window.DynamicForm == undefined) {
                     }
                 }
             },
+
             addRendering: function(name, func) {
                 if ($.isArray(name)) {
                     for (var i in name) {
-                        this.renderings[name[i]] = func;
+                        this.addRendering(name[i], func);
                     }
                 } else {
-                    this.renderings[name] = func;
+                    this.renderings[name] = function() {
+                        return func.apply(this, arguments);
+                    };
+                    this.renderings[name].toString = function() {
+                        return 'Rendering[' + name + ']';
+                    }
                 }
             }
         }

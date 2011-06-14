@@ -1,0 +1,54 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../main/resources/com/ovea/js/dynamic-form/dynamic-form.js"></script>
+    <script type="text/javascript" src="spec.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var dynForm = new DynamicForm({
+                    specification: spec,
+                    target: $('#form_container')
+                });
+            dynForm.render();
+            $('#jsonify').click(function() {
+                $('#json').append(JSON.stringify(dynForm.toJSON()) + '<br/>');
+            });
+        });
+    </script>
+    <style type="text/css">
+        .df-sec, .df-group {
+            border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
+        }
+        .df-lbl {
+            color: gray;
+            padding-left: 10px;
+        }
+        select.df-sel {
+            margin-left: 10px;
+        }
+        .df-title {
+            font-weight: bold;
+            display: inline-block;
+        }
+        div.df-title {
+            width: 200px;
+        }
+        .df-el {
+            padding: 2px;
+        }
+        label.df-open {
+            padding-right: 5px;
+        }
+        #json {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+<div id="form_container"></div>
+<p><button id="jsonify">to JSON</button></p>
+<div id="json"></div>
+</body>
+</html>
