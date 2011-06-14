@@ -105,7 +105,7 @@ if (window.DynamicForm == undefined) {
                 return 'DynamicForm[' + id() + ']';
             },
 
-            toJSON: function() {
+            toObject: function() {
                 var json = {};
                 var els = this.options.target.find(':input:enabled:visible[name]');
                 $.each(els.serializeArray(), function() {

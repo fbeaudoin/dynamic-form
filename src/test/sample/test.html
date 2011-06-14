@@ -11,7 +11,7 @@
                 });
             dynForm.render();
             $('#jsonify').click(function() {
-                $('#json').append(JSON.stringify(dynForm.toJSON()) + '<br/>');
+                $('#json').append(JSON.stringify(dynForm.toObject()) + '<br/>');
             });
         });
     </script>
